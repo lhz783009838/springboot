@@ -26,7 +26,6 @@ public class DataResult {
     }
 
     public static DataResult success() {
-
         return new DataResult(ResultCodeConstants.RESULT_CODE_SUCCESS, ResultCodeConstants.RESULT_MSG_SUCCESS,
                 0L, "", "");
     }
@@ -48,6 +47,11 @@ public class DataResult {
     public static DataResult fail(String msg) {
         return new DataResult(ResultCodeConstants.RESULT_CODE_FAIL_BI_ERROR, msg,
                 0L, "", "");
+    }
+
+    public static DataResult fail(String msg, String trace) {
+        return new DataResult(ResultCodeConstants.RESULT_CODE_FAIL_BI_ERROR, msg,
+                0L, "", trace);
     }
 
     public DataResult() {

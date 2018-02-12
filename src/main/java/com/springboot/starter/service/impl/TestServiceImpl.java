@@ -1,4 +1,4 @@
-package com.springboot.starter.entity.impl;
+package com.springboot.starter.service.impl;
 
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.springboot.starter.dao.TestDao;

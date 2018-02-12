@@ -25,7 +25,7 @@ spring:
 
     mybatis:
       # mapper 扫描路径
-      mapperLocations: classpath*:com/springboot/starter/dao/mapper/*Mapper.xml
+      mapperLocations: classpath*:com/springboot/starter/dao/mapper/*Dao.xml
       # 是否开启xml热加载
       enabled: true
 
@@ -46,3 +46,5 @@ authorization:
       logout: auth/logout
       refresh: auth/refresh
       register: auth/register
+
+api: test

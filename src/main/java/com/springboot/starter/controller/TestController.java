@@ -1,5 +1,6 @@
 package com.springboot.starter.controller;
 
+import com.springboot.starter.common.handle.BaseController;
 import com.springboot.starter.common.properties.DataSourceProperties;
 import com.springboot.starter.common.properties.DruidProperties;
 import com.springboot.starter.common.response.DataResult;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/test")
-public class TestController {
+public class TestController extends BaseController{
 
     @Autowired
     private DataSourceProperties dataSourceProperties;
@@ -54,7 +55,7 @@ public class TestController {
         return "success";
     }
 
-    @GetMapping(value = "/hello")
+    @GetMapping(value = "${api}/hello")
     public DataResult hello(){
         return DataResult.success();
     }
