@@ -54,6 +54,11 @@ public class DataResult {
                 0L, "", trace);
     }
 
+    public static DataResult forbidden(String msg) {
+        return new DataResult(ResultCodeConstants.RESULT_CODE_FAIL_SYS_FORBIDDEN, msg,
+                0L, "", "");
+    }
+
     public DataResult() {
     }
 

@@ -7,6 +7,7 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -33,7 +34,8 @@ public class GlobalExceptionHandler {
      * @param req req
      * @param rsp rsp
      * @param ex  ex
-     *            404异常系统默认不抛出异常，直接跳入/error,具体实现在
+     *            404异常系统默认不抛出异常，直接跳入/error,具体实现在DispatcherServlet ->throwExceptionIfNoHandlerFound属性
+     *            需要在application.yml中配置
      */
     @ExceptionHandler(value = Exception.class)
     public void exceptionHandler(HttpServletRequest req, HttpServletResponse rsp, Exception ex) {
@@ -63,6 +65,9 @@ public class GlobalExceptionHandler {
             result = requestParameterException.getMessage();
             responseResult(rsp, DataResult.fail(String.format(DefaultExceptionMsg
                     .MISSING_SERVLET_REQUEST_PARAMETER_EXCEPTION, requestParameterException.getParameterName()), result));
+        } else if (ex instanceof AuthenticationException) {
+            result = ExceptionUtils.getMessage(ex);
+            responseResult(rsp, DataResult.forbidden(result));
         } else {
             result = ExceptionUtils.getMessage(ex);
             responseResult(rsp, DataResult.fail(DefaultExceptionMsg.SYSTEM_ERROR_EXCEPTION, result));
@@ -75,7 +80,7 @@ public class GlobalExceptionHandler {
             rsp.setCharacterEncoding("utf-8");
             rsp.getWriter().write(JSONObject.toJSONString(res));
         } catch (Exception e) {
-            logger.error("响应数据异常，e={}", e);
+            logger.error("响应数据异常，e={0}", e);
         }
 
     }

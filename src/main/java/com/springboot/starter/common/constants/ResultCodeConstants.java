@@ -11,6 +11,8 @@ public interface ResultCodeConstants {
 
     String RESULT_CODE_FAIL_SYS_ERROR = "0500";
 
+    String RESULT_CODE_FAIL_SYS_FORBIDDEN = "0403";
+
     String RESULT_MSG_SUCCESS = "成功";
 
     String RESULT_MSG_FAIL_BI_ERROR = "失败";

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,13 +25,15 @@ public class SysUser extends Model<SysUser> implements UserDetails{
     @TableId
     private Long id;
 
-    @TableField(value = "userName")
+    @NotBlank(message = "请输入用户名")
+    @TableField(value = "user_name")
     private String userName;
 
+    @NotBlank(message = "请输入密码")
     @TableField(value = "password")
     private String password;
 
-    @TableField(value = "lastPasswordRestTime")
+    @TableField(value = "last_password_reset_time")
     private Date lastPasswordRestTime;
 
     private List<SysRole> roles;
