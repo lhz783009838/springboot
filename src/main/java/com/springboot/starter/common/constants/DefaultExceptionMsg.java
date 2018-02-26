@@ -17,4 +17,8 @@ public interface DefaultExceptionMsg {
     String HTTP_REQUEST_METHOD_NOT_SUPPORTED_EXCEPTION = "该请求不支持【%s】方法";
 
     String MISSING_SERVLET_REQUEST_PARAMETER_EXCEPTION = "请求缺少【%s】参数";
+
+    String FORBIDDEN = "拒绝未登录访问";
+
+    String UNAUTHORIZED = "无访问权限";
 }
