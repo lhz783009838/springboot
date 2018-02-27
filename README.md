@@ -1,15 +1,22 @@
 #springBoot练习项目
 
 #项目结构
+
     packege->
         common->  // 通用包，包含基本配置，工具类，处理器，枚举类等
             config-> // 配置
             constants-> // 枚举类
             exception-> // 异常
             filter-> // 过滤器
+                JwtAuthenticationTokenFilter-> // token校验过滤器
             handle-> // 处理工具，包含切面，拦截器，通用异常处理器等
+                GlobalExceptionHandler-> // 通过异常处理（处理全局抛出的异常）
+                RestAuthenticationEntryPointHandler-> // 无访问权限（403）及登录校验失败处理器
+                RestRequestLogAspectHandler-> //　请求记录切面，记录正常请求日志详情及返回信息的时间戳，异常请求不会经过该切面
             properties-> // 资源读取，读取配置中的数据
+                PropertiesConfig-> // 总配置类，余下文件为配置数据读取器
             response-> // 响应类
+                DataResult-> // 通用的结果返回类，用于响应数据
             utils-> // 工具类
         controller-> 控制器
         dao-> // 存放mapper及xml文件

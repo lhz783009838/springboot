@@ -16,6 +16,7 @@ import java.io.IOException;
 
 /**
  * @author baker
+ * 未登录及登录认证错误处理器
  */
 public class RestAuthenticationEntryPointHandler implements AuthenticationEntryPoint {
 
