@@ -6,7 +6,9 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.commons.lang3.time.DateUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +24,8 @@ import java.util.Map;
 public class JwtTokenUtil implements Serializable{
 
     private static final long serialVersionUID = -8262718886678681081L;
+
+    private static final Logger logger = LoggerFactory.getLogger(JwtTokenUtil.class);
 
     /** claim 用户信息 **/
     private static final String CLAIM_KEY_USERNAME = "CLAIM_KEY_USERNAME";
@@ -44,7 +48,7 @@ public class JwtTokenUtil implements Serializable{
         String username;
         try {
             final Claims claims = getClaimsFromToken(token);
-            username = claims.getSubject();
+            username = (String) claims.get(CLAIM_KEY_USERNAME);
         } catch (Exception e) {
             username = null;
         }
@@ -62,6 +66,7 @@ public class JwtTokenUtil implements Serializable{
             final Claims claims = getClaimsFromToken(token);
             created = new Date((Long) claims.get(CLAIM_KEY_CREATED));
         } catch (Exception e) {
+            logger.info("token异常，原因：{}",e.getMessage());
             created = null;
         }
         return created;
@@ -96,8 +101,11 @@ public class JwtTokenUtil implements Serializable{
                     .parseClaimsJws(token)
                     .getBody();
         } catch (Exception e) {
+            logger.info("token异常，原因：{}",e.getMessage());
             claims = null;
         }
+        logger.info("当前时间:     {}", DateFormatUtils.format(new Date(),"yyyy-dd-MM hh:mm:ss"));
+        logger.info("token到期时间:{}",DateFormatUtils.format(claims.getExpiration(),"yyyy-dd-MM hh:mm:ss"));
         return claims;
     }
 
@@ -106,6 +114,7 @@ public class JwtTokenUtil implements Serializable{
      * @return 到时间
      */
     private Date generateExpirationDate() {
+        logger.info("token生成时间:{}",DateFormatUtils.format(new Date(),"yyyy-dd-MM hh:mm:ss"));
         return new Date(System.currentTimeMillis() + properties.getJwt().getExpiration() * 1000);
     }
 
@@ -178,6 +187,7 @@ public class JwtTokenUtil implements Serializable{
             claims.put(CLAIM_KEY_CREATED, new Date());
             refreshedToken = generateToken(claims);
         } catch (Exception e) {
+            logger.info("token异常，原因：{}",e.getMessage());
             refreshedToken = null;
         }
         return refreshedToken;

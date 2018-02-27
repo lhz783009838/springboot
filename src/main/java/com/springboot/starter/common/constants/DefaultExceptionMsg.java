@@ -21,4 +21,10 @@ public interface DefaultExceptionMsg {
     String FORBIDDEN = "拒绝未登录访问";
 
     String UNAUTHORIZED = "无访问权限";
+
+    String BAD_CREDENTIALS_EXCEPTION = "账号或密码错误";
+
+    String ACCOUNT_DISABLED_EXCEPTION = "账号被锁定或禁用";
+
+
 }

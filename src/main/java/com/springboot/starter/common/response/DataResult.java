@@ -2,6 +2,7 @@ package com.springboot.starter.common.response;
 
 import com.springboot.starter.common.constants.DefaultExceptionMsg;
 import com.springboot.starter.common.constants.ResultCodeConstants;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author baker
@@ -60,8 +61,19 @@ public class DataResult {
                 0L, "", "");
     }
 
+    public static DataResult forbidden(String msg) {
+        msg = StringUtils.isEmpty(msg) ? DefaultExceptionMsg.FORBIDDEN : msg;
+        return new DataResult(ResultCodeConstants.RESULT_CODE_FAIL_SYS_FORBIDDEN, msg,
+                0L, "", "");
+    }
+
     public static DataResult unauthorized() {
         return new DataResult(ResultCodeConstants.RESULT_CODE_FAIL_SYS_UNAUTHORIZED, DefaultExceptionMsg.UNAUTHORIZED,
+                0L, "", "");
+    }
+
+    public static DataResult unauthorized(String msg) {
+        return new DataResult(ResultCodeConstants.RESULT_CODE_FAIL_SYS_UNAUTHORIZED, msg,
                 0L, "", "");
     }
 

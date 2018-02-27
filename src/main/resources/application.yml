@@ -44,8 +44,8 @@ authorization:
   config:
     jwt:
       header: Authorization
-      secret:
-      expiration: 840
+      secret: '@iloveyou'
+      expiration: 60  #秒
       tokenHead: Bearer
     route:
       login: auth/login

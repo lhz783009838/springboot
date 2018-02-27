@@ -2,6 +2,7 @@ package com.springboot.starter.common.handle;
 
 import com.springboot.starter.common.constants.DefaultExceptionMsg;
 import com.springboot.starter.common.response.DataResult;
+import com.springboot.starter.common.utils.AuthenticationResultUtil;
 import com.springboot.starter.common.utils.JsonResultBuildUtil;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
@@ -38,7 +39,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = Exception.class)
     public void exceptionHandler(HttpServletRequest req, HttpServletResponse rsp, Exception ex) {
-        logger.error("====出现异常====", ex);
+        logger.info("[0]", ex);
         String result = "";
         if (ex instanceof NoHandlerFoundException) {
             JsonResultBuildUtil.responseResult(rsp, DataResult.fail(DefaultExceptionMsg.NO_HANDLER_FOUND_EXCEPTION));
@@ -65,11 +66,11 @@ public class GlobalExceptionHandler {
             JsonResultBuildUtil.responseResult(rsp, DataResult.fail(String.format(DefaultExceptionMsg
                     .MISSING_SERVLET_REQUEST_PARAMETER_EXCEPTION, requestParameterException.getParameterName()), result));
         } else if (ex instanceof AuthenticationException) {
-            JsonResultBuildUtil.responseResult(rsp, DataResult.forbidden());
+            result = AuthenticationResultUtil.genericForbiddenResult(ex);
+            JsonResultBuildUtil.responseResult(rsp, DataResult.forbidden(result));
         } else {
             result = ExceptionUtils.getMessage(ex);
             JsonResultBuildUtil.responseResult(rsp, DataResult.fail(DefaultExceptionMsg.SYSTEM_ERROR_EXCEPTION, result));
         }
     }
-
 }

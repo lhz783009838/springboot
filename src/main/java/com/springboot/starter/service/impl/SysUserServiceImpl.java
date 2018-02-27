@@ -2,7 +2,6 @@ package com.springboot.starter.service.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.springboot.starter.common.exception.SystemException;
 import com.springboot.starter.dao.SysUserDao;
 import com.springboot.starter.entity.authority.SysUser;
 import com.springboot.starter.service.SysUserService;
@@ -12,6 +11,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 
 /**
@@ -31,13 +32,14 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
 
     @Override
     public SysUser addUser(SysUser sysUser) {
-        final String userName = sysUser.getUserName();
+        final String userName = sysUser.getUsername();
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         if (null != this.selectOne(new EntityWrapper<SysUser>().eq("user_name", userName))) {
-            throw new SystemException("用户名已存在");
+            return null;
         }
         final String rawPassword = sysUser.getPassword();
         sysUser.setPassword(encoder.encode(rawPassword));
+        sysUser.setLastPasswordRestTime(new Date());
         this.insert(sysUser);
         return sysUser;
     }

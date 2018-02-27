@@ -28,7 +28,10 @@ public class UserController {
 
     @PostMapping(value = "/save")
     public DataResult addUser(@Valid @RequestBody SysUser sysUser) {
-        sysUserService.addUser(sysUser);
+        SysUser user = sysUserService.addUser(sysUser);
+        if (null == user) {
+            return DataResult.fail("用户名已被注册");
+        }
         return DataResult.success("注册成功");
     }
 }

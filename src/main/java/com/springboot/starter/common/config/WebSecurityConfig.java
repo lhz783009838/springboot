@@ -47,16 +47,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new RestAuthenticationEntryPointHandler();
     }
 
+    /**
+     * 定义用户验证需要的配置
+     * @param auth 用户校验管理器
+     * @throws Exception 异常
+     */
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
-    }
-
-    @Autowired
-    public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-        authenticationManagerBuilder
-                .userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder());
+        // 不自定义authenticationProvider时默认使用DaoAuthenticationProvider,需要定义该校验器的UserDetailService及密码解析器
+        // 注： 如果不定义密码解析器，DaoAuthentication默认使用的是PlaintextPasswordEncoder(原因看代码),导致密码比对失败
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Bean
@@ -74,7 +74,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
+                // 自定义 401 异常
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler())
+                //　自定义 403 异常
                 .authenticationEntryPoint(authenticationEntryPoint())
                 .and()
                 // jwt不需要 csrf
@@ -98,7 +100,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // auth请求相关放行
                 .antMatchers("/auth/**").permitAll()
                 .antMatchers("/user/**").permitAll()
-                //.antMatchers("/test/**").permitAll()
                 // 其它请求全部拦截
                 .anyRequest().authenticated();
         // 添加token校验拦截器

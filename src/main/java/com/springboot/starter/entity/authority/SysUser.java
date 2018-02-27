@@ -27,7 +27,7 @@ public class SysUser extends Model<SysUser> implements UserDetails{
 
     @NotBlank(message = "请输入用户名")
     @TableField(value = "user_name")
-    private String userName;
+    private String username;
 
     @NotBlank(message = "请输入密码")
     @TableField(value = "password")
@@ -36,7 +36,7 @@ public class SysUser extends Model<SysUser> implements UserDetails{
     @TableField(value = "last_password_reset_time")
     private Date lastPasswordRestTime;
 
-    private List<SysRole> roles;
+    private transient List<SysRole> roles;
 
     public Long getId() {
         return id;
@@ -46,12 +46,8 @@ public class SysUser extends Model<SysUser> implements UserDetails{
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setPassword(String password) {
@@ -86,8 +82,10 @@ public class SysUser extends Model<SysUser> implements UserDetails{
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authGrants = new ArrayList<>();
-        for (SysRole role : this.getRoles()) {
-            authGrants.add(new SimpleGrantedAuthority(role.getName()));
+        if(null != this.getRoles()){
+            for (SysRole role : this.getRoles()) {
+                authGrants.add(new SimpleGrantedAuthority(role.getName()));
+            }
         }
         return authGrants;
     }
@@ -99,7 +97,7 @@ public class SysUser extends Model<SysUser> implements UserDetails{
 
     @Override
     public String getUsername() {
-        return this.userName;
+        return username;
     }
 
     @Override
@@ -119,6 +117,6 @@ public class SysUser extends Model<SysUser> implements UserDetails{
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

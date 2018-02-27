@@ -25,7 +25,7 @@ public class TestController extends BaseController{
         return "success";
     }
 
-    @GetMapping(value = "${api}/hello")
+    @GetMapping(value = "/hello")
     public DataResult hello(){
         return DataResult.success();
     }
