@@ -42,7 +42,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         String tokenHead = authorizationProperties.getJwt().getTokenHead();
         String header = req.getHeader(authorizationProperties.getJwt().getHeader());
         if (StringUtils.isNotEmpty(header) && header.startsWith(tokenHead)) {
-            final String authToken = header.substring(tokenHead.length());
+            final String authToken = header.substring(tokenHead.length() + 1);
             String username = jwtTokenUtil.getUsernameFromToken(authToken);
             if (StringUtils.isNotEmpty(username)) {
                 UserDetails userDetails = this.sysUserService.loadUserByUsername(username);
@@ -52,7 +52,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                     authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(req));
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                 }
-            }else {
+            } else {
                 SecurityContextHolder.getContext().setAuthentication(null);
             }
         }

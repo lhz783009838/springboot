@@ -21,7 +21,6 @@ public class UserController {
 
     private SysUserService sysUserService;
 
-    @Autowired
     public UserController(SysUserService sysUserService) {
         this.sysUserService = sysUserService;
     }

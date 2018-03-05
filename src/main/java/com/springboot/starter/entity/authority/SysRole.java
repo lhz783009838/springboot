@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import org.hibernate.validator.constraints.NotBlank;
 
 import java.io.Serializable;
 
@@ -18,6 +19,7 @@ public class SysRole extends Model<SysRole>{
     @TableId
     private Long id;
 
+    @NotBlank(message = "请输入角色名")
     @TableField(value = "name")
     private String name;
 

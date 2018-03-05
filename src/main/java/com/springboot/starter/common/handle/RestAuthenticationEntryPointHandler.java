@@ -1,11 +1,8 @@
 package com.springboot.starter.common.handle;
 
-import com.springboot.starter.common.constants.DefaultExceptionMsg;
 import com.springboot.starter.common.response.DataResult;
-import com.springboot.starter.common.utils.AuthenticationResultUtil;
+import com.springboot.starter.common.utils.ExceptionResultUtil;
 import com.springboot.starter.common.utils.JsonResultBuildUtil;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 
@@ -23,7 +20,7 @@ public class RestAuthenticationEntryPointHandler implements AuthenticationEntryP
 
     @Override
     public void commence(HttpServletRequest req, HttpServletResponse rsp, AuthenticationException e) throws IOException, ServletException {
-        String result = AuthenticationResultUtil.genericForbiddenResult(e);
+        String result = ExceptionResultUtil.genericForbiddenResult(e);
         JsonResultBuildUtil.responseResult(rsp, DataResult.forbidden(result));
     }
 }

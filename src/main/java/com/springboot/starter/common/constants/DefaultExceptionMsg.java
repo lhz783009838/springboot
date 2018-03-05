@@ -26,5 +26,5 @@ public interface DefaultExceptionMsg {
 
     String ACCOUNT_DISABLED_EXCEPTION = "账号被锁定或禁用";
 
-
+    String HTTP_MESSAGE_NOT_READABLE_EXCEPTION = "读取JSON参数失败，请确认格式是否正确";
 }

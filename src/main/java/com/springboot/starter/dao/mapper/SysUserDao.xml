@@ -3,7 +3,7 @@
 <mapper namespace="com.springboot.starter.dao.SysUserDao">
     <resultMap id="userDetail" type="com.springboot.starter.entity.authority.SysUser">
         <result property="id" column="id"/>
-        <result property="userName" column="user_name"/>
+        <result property="username" column="user_name"/>
         <result property="password" column="password"/>
         <result property="lastPasswordRestTime" column="last_password_reset_time"/>
         <collection property="roles" ofType="com.springboot.starter.entity.authority.SysRole">
@@ -12,7 +12,7 @@
         </collection>
     </resultMap>
 
-    <select id="selectDetailByUserName" resultType="com.springboot.starter.entity.authority.SysUser">
+    <select id="selectDetailByUserName" resultMap="userDetail">
         SELECT u.*,r.* FROM t_auth_user u
         LEFT JOIN t_auth_user_role aur ON u.id = aur.user_id
         LEFT JOIN t_auth_role r ON r.id = aur.role_id

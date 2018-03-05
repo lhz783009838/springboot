@@ -2,11 +2,13 @@ package com.springboot.starter.common.handle;
 
 import com.springboot.starter.common.constants.DefaultExceptionMsg;
 import com.springboot.starter.common.response.DataResult;
-import com.springboot.starter.common.utils.AuthenticationResultUtil;
+import com.springboot.starter.common.utils.ExceptionResultUtil;
 import com.springboot.starter.common.utils.JsonResultBuildUtil;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
@@ -19,7 +21,6 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 /**
  * @author baker
  */
@@ -66,8 +67,13 @@ public class GlobalExceptionHandler {
             JsonResultBuildUtil.responseResult(rsp, DataResult.fail(String.format(DefaultExceptionMsg
                     .MISSING_SERVLET_REQUEST_PARAMETER_EXCEPTION, requestParameterException.getParameterName()), result));
         } else if (ex instanceof AuthenticationException) {
-            result = AuthenticationResultUtil.genericForbiddenResult(ex);
+            result = ExceptionResultUtil.genericForbiddenResult(ex);
             JsonResultBuildUtil.responseResult(rsp, DataResult.forbidden(result));
+        } else if (ex instanceof HttpMessageNotReadableException) {
+            result = ExceptionUtils.getMessage(ex);
+            JsonResultBuildUtil.responseResult(rsp, DataResult.fail(DefaultExceptionMsg.HTTP_MESSAGE_NOT_READABLE_EXCEPTION, result));
+        } else if (ex instanceof AccessDeniedException) {
+            JsonResultBuildUtil.responseResult(rsp, DataResult.unauthorized(DefaultExceptionMsg.UNAUTHORIZED));
         } else {
             result = ExceptionUtils.getMessage(ex);
             JsonResultBuildUtil.responseResult(rsp, DataResult.fail(DefaultExceptionMsg.SYSTEM_ERROR_EXCEPTION, result));

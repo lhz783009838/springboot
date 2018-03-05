@@ -27,7 +27,6 @@ spring:
       testOnBorrow: false
       testOnReturn: false
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-
     mybatis:
       # mapper 扫描路径
       mapperLocations: classpath*:com/springboot/starter/dao/mapper/*Dao.xml
@@ -45,7 +44,7 @@ authorization:
     jwt:
       header: Authorization
       secret: '@iloveyou'
-      expiration: 60  #秒
+      expiration: 3600  #秒
       tokenHead: Bearer
     route:
       login: auth/login

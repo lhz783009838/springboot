@@ -1,15 +1,16 @@
 package com.springboot.starter.common.utils;
 
 import com.springboot.starter.common.constants.DefaultExceptionMsg;
+import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 
 /**
  * @author baker
  */
-public final class AuthenticationResultUtil {
+public final class ExceptionResultUtil {
 
-    private AuthenticationResultUtil() {
+    private ExceptionResultUtil() {
     }
 
     public static String genericForbiddenResult(Exception e) {
@@ -21,4 +22,5 @@ public final class AuthenticationResultUtil {
         }
         return result;
     }
+
 }
