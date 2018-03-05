@@ -12,6 +12,7 @@ import com.springboot.starter.service.SysUserService;
 import org.apache.commons.collections.MapUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -60,7 +61,7 @@ public class TestController extends BaseController {
         return DataResult.success("绑定成功");
     }
 
-    @Secured({"ROLE_USER"})
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     @GetMapping(value = "/securityRole")
     public DataResult hasRoleAdmin() {
         return DataResult.success("访问成功");
