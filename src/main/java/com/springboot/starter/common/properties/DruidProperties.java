@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * Druid连接池配置
  *
- * @author baker
+ * @author linhuanzhen
  */
 public class DruidProperties {
 

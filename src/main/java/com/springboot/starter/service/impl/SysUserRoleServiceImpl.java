@@ -7,7 +7,7 @@ import com.springboot.starter.service.SysUserRoleService;
 import org.springframework.stereotype.Service;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 @Service
 public class SysUserRoleServiceImpl extends ServiceImpl<SysUserRoleDao, SysUserRole> implements SysUserRoleService {

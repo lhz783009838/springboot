@@ -5,7 +5,7 @@ import com.springboot.starter.entity.authority.SysUser;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 public interface SysUserDao extends BaseMapper<SysUser> {
 

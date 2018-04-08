@@ -3,7 +3,7 @@ package com.springboot.starter.common.utils;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 public final class WebUtil {
 

@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 @TableName(value = "t_auth_user")
 public class SysUser extends Model<SysUser> implements UserDetails{
@@ -33,8 +33,35 @@ public class SysUser extends Model<SysUser> implements UserDetails{
     @TableField(value = "password")
     private String password;
 
+    @TableField(value = "salt")
+    private String salt;
+
     @TableField(value = "last_password_reset_time")
     private Date lastPasswordRestTime;
+
+    @TableField(value = "sex")
+    private Integer sex;
+
+    @TableField(value = "birthday")
+    private Date birthday;
+
+    @TableField(value = "create_time")
+    private Date createTime;
+
+    @TableField(value = "update_time")
+    private Date updateTime;
+
+    @TableField(value = "avatar")
+    private String avatar;
+
+    @TableField(value = "status")
+    private Integer status;
+
+    @TableField(value = "remark")
+    private String remark;
+
+    @TableField(value = "version")
+    private Integer version;
 
     private transient List<SysRole> roles;
 
@@ -118,5 +145,77 @@ public class SysUser extends Model<SysUser> implements UserDetails{
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }

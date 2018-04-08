@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 @Service
 public class AuthServiceImpl implements AuthService {

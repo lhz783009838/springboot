@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author baker
+ * @author linhuanzhen
  * 鉴权失败处理器，返回自定义异常信息
  */
 public class RestAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {

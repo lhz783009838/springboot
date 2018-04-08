@@ -1,7 +1,7 @@
 package com.springboot.starter.common.constants;
 
 /**
- * @author baker
+ * @author linhuanzhen
  * 默认异常信息提示
  */
 public interface DefaultExceptionMsg {

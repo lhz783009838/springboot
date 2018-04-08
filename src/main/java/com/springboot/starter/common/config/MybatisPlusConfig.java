@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * mybatis-plus 配置类
  *
- * @author baker
+ * @author linhuanzhen
  */
 @Configuration
 @MapperScan(value = "com.springboot.starter.dao")

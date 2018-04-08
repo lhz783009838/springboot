@@ -1,7 +1,7 @@
 package com.springboot.starter.common.constants;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 public interface ResultCodeConstants {
 

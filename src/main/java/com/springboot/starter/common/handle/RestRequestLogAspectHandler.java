@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
 /**
- * @author baker
+ * @author linhuanzhen
  * 控制器切面，用于记录请求基本信息及通过控制器响应时的时间戳
  */
 @Component

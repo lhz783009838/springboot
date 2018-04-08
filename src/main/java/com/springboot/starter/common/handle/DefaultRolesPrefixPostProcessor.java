@@ -9,7 +9,7 @@ import org.springframework.security.web.access.expression.DefaultWebSecurityExpr
 import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter;
 
 /**
- * @author baker
+ * @author linhuanzhen
  * 自定义角色前缀配置
  */
 public class DefaultRolesPrefixPostProcessor implements BeanPostProcessor, PriorityOrdered {

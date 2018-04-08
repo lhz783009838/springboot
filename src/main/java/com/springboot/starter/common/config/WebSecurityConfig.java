@@ -21,7 +21,7 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
- * @author baker
+ * @author linhuanzhen
  * 安全配置
  */
 @Configuration

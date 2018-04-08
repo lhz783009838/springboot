@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.service.IService;
 import com.springboot.starter.entity.authority.SysRole;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 public interface SysRoleService extends IService<SysRole> {
 

@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author baker
+ * @author linhuanzhen
  * token校验拦截器
  */
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {

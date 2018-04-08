@@ -13,7 +13,7 @@ import javax.naming.AuthenticationException;
 import javax.validation.Valid;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 @RestController
 @RequestMapping(value = "/user")

@@ -5,7 +5,7 @@ import com.springboot.starter.entity.authority.SysUser;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 public interface SysUserService extends IService<SysUser> {
 

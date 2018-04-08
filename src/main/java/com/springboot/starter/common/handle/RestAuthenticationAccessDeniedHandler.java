@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 public class RestAuthenticationAccessDeniedHandler implements AccessDeniedHandler {
 

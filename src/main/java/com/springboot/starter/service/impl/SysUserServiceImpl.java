@@ -16,7 +16,7 @@ import java.util.Date;
 
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 @Service
 public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> implements SysUserService, UserDetailsService {

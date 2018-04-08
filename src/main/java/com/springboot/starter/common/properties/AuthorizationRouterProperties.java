@@ -1,7 +1,7 @@
 package com.springboot.starter.common.properties;
 
 /**
- * @author baker
+ * @author linhuanzhen
  * spring security 路由配置
  */
 public class AuthorizationRouterProperties {

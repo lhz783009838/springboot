@@ -5,7 +5,7 @@ import com.springboot.starter.common.constants.ResultCodeConstants;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 public class DataResult {
 

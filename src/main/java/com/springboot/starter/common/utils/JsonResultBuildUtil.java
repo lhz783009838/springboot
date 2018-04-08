@@ -9,7 +9,7 @@ import org.springframework.http.MediaType;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 public final class JsonResultBuildUtil {
 

@@ -1,7 +1,7 @@
 package com.springboot.starter.common.exception;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 public class SystemException extends RuntimeException {
     private static final long serialVersionUID = 7129758467109867145L;

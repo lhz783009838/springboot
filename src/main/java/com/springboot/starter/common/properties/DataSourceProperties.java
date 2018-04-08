@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * 数据库配置读取
- * @author baker
+ * @author linhuanzhen
  */
 @ConfigurationProperties(prefix = "spring.mysql")
 public class DataSourceProperties {

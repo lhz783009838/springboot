@@ -1,7 +1,7 @@
 package com.springboot.starter.common.properties;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 public class JwtProperties {
 

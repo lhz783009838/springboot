@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 @RestController
 @RequestMapping(value = "/test")

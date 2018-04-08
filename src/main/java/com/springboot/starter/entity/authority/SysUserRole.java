@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.annotations.TableName;
 import java.io.Serializable;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 @TableName(value = "t_auth_user_role")
 public class SysUserRole extends Model<SysUserRole> {

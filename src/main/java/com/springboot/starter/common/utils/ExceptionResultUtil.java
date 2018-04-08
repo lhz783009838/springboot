@@ -6,7 +6,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 public final class ExceptionResultUtil {
 

@@ -3,7 +3,7 @@ package com.springboot.starter.service;
 import com.springboot.starter.entity.authority.SysUser;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 public interface AuthService {
 

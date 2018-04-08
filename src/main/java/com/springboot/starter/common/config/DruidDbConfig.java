@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 @Configuration
 public class DruidDbConfig {

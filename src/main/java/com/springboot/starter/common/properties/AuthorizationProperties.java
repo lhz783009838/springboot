@@ -3,7 +3,7 @@ package com.springboot.starter.common.properties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * @author baker
+ * @author linhuanzhen
  * 安全配置信息读取器
  */
 @ConfigurationProperties(prefix = "authorization.config")

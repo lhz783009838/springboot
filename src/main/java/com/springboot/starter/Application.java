@@ -2,10 +2,9 @@ package com.springboot.starter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
- * @author baker
+ * @author linhuanzhen
  */
 @SpringBootApplication
 public class Application {

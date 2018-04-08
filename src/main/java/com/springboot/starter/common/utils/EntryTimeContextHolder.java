@@ -1,7 +1,7 @@
 package com.springboot.starter.common.utils;
 
 /**
- * @author baker
+ * @author linhuanzhen
  * 请求起始时间记录线程
  */
 public class EntryTimeContextHolder {

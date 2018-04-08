@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * 配置读取器
- * @author baker
+ * @author linhuanzhen
  */
 @Configuration
 @EnableConfigurationProperties({DataSourceProperties.class,AuthorizationProperties.class})
