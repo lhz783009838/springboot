@@ -11,6 +11,7 @@ import java.util.Date;
 
 /**
  * @author linhuanzhen
+ * 角色
  */
 @TableName(value = "t_auth_role")
 public class SysRole extends Model<SysRole>{
