@@ -3,14 +3,17 @@ package com.springboot.starter.entity.authority;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author linhuanzhen
+ * 菜单
  */
-public class SysMenu extends Model<SysMenu>{
+@TableName(value = "t_auth_menu")
+public class SysMenu extends Model<SysMenu> {
 
     private static final long serialVersionUID = 874259623886250233L;
 
@@ -38,20 +41,22 @@ public class SysMenu extends Model<SysMenu>{
     @TableField(value = "sort")
     private Integer sort;
 
-    /** 菜单类型 0：叶节点 1：子节点 **/
+    /**
+     * 菜单类型 0：叶节点 1：子节点
+     **/
     @TableField(value = "type")
     private Integer type;
 
-    @TableField(value = "createUser")
-    private Long userId;
+    @TableField(value = "create_user_id")
+    private Long createUserId;
 
-    @TableField(value = "createTime")
+    @TableField(value = "create_time")
     private Date createTime;
 
-    @TableField(value = "updateUserId")
+    @TableField(value = "update_user_id")
     private Long updateUserId;
 
-    @TableField(value = "updateTime")
+    @TableField(value = "update_time")
     private Date updateTime;
 
     @TableField(value = "status")
@@ -60,7 +65,9 @@ public class SysMenu extends Model<SysMenu>{
     @TableField(value = "remark")
     private String remark;
 
-    /** 预留字段，前端组件字符串 **/
+    /**
+     * 预留字段，前端组件字符串
+     **/
     @TableField(value = "component")
     private String component;
 
@@ -141,12 +148,12 @@ public class SysMenu extends Model<SysMenu>{
         this.type = type;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getCreateUserId() {
+        return createUserId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setCreateUserId(Long createUserId) {
+        this.createUserId = createUserId;
     }
 
     public Date getCreateTime() {

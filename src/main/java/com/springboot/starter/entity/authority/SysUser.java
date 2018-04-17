@@ -17,6 +17,7 @@ import java.util.List;
 
 /**
  * @author linhuanzhen
+ * 用户
  */
 @TableName(value = "t_auth_user")
 public class SysUser extends Model<SysUser> implements UserDetails{

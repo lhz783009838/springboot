@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 /**
  * @author linhuanzhen
+ * 用户角色关联
  */
 @TableName(value = "t_auth_user_role")
 public class SysUserRole extends Model<SysUserRole> {
