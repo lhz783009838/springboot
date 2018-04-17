@@ -95,7 +95,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/favicon.ico",
                         "/**/*.html",
                         "/**/*.css",
-                        "/**/*.js"
+                        "/**/*.js",
+                        // wx
+                        "/wx/**",
+                        // index
+                        "/index"
                 ).permitAll()
                 // auth请求相关放行
                 .antMatchers("/auth/**").permitAll()
